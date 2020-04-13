@@ -1,7 +1,7 @@
 TAG=neonfuz/catan
 
 run: build_id
-	docker run -it --rm -v $(PWD):/app `cat build`
+	docker run -it --rm -v $(PWD):/app `cat build_id`
 
 build_id: package.json yarn.lock Dockerfile
 	docker build --iidfile ./build_id . -t $(TAG)
