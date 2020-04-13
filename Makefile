@@ -1,12 +1,9 @@
 TAG=neonfuz/catan
 
-run: build ## run development shell
+run: build_id
 	docker run -it --rm -v $(PWD):/app `cat build`
 
-build: package.json yarn.lock Dockerfile ## Build development image
-	docker build --iidfile ./build . -t $(TAG)
+build_id: package.json yarn.lock Dockerfile
+	docker build --iidfile ./build_id . -t $(TAG)
 
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-
-.PHONY: help run
+.PHONY: run
