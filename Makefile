@@ -3,7 +3,7 @@ TAG=neonfuz/catan
 run: build ## run development shell
 	docker run -it --rm -v $(PWD):/app `cat build`
 
-build: package.json yarn.lock Dockerfile devshell.sh ## Build development image
+build: package.json yarn.lock Dockerfile ## Build development image
 	docker build --iidfile ./build . -t $(TAG)
 
 help:
